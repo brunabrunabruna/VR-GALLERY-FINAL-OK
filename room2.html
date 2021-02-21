@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ROOM 2 // ARTISTS </title>
+    <meta name="description" content="Hello, WebVR! • A-Frame">
+    <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
+      <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+        <script src="https://unpkg.com/aframe-animation-component@^4.1.1/dist/aframe-animation-timeline-component.min.js"></script>
+        <script src="https://unpkg.com/aframe-animation-timeline-component@2.0.0/dist/aframe-animation-timeline-component.min.js"></script>
+      
+         <script src="js/aframe-extras.js"></script>
+    <script src="js/aframe-text-geometry-component.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+      
+      <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
+  <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+  <script src="https://unpkg.com/super-hands@3.0.0/dist/super-hands.min.js"></script>
+  <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
+  <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
+    
+     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
+    
+    
+        <script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
+        <script src="https://unpkg.com/aframe-extras.ocean@%5E3.5.x/dist/aframe-extras.ocean.min.js"></script>
+        <script src="https://unpkg.com/aframe-gradient-sky@1.0.4/dist/gradientsky.min.js"></script>
+        
+
+        <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v4.1.2/dist/aframe-extras.min.js"></script>
+
+        <script src="https://unpkg.com/aframe-teleport-controls/dist/aframe-teleport-controls.min.js"></script> 
+       <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
+      <script src="https://rawgit.com/aframevr/aframe/master/examples/showcase/link-traversal/js/components/link-controls.js"></script>
+      
+      <script src="https://unpkg.com/aframe-physics-system@1.4.0/dist/aframe-physics-system.min.js"></script>
+     
+      <script src="https://mixedreality.mozilla.org/ammo.js/builds/ammo.wasm.js"></script>
+      
+    
+    <script>
+		AFRAME.registerComponent('play-pause', {
+			init: function () {
+
+                var myVideo = document.querySelector('#video1');
+				var videoControls = document.querySelector('#videoControls');
+				this.el.addEventListener('click', function () {
+					if (myVideo.paused) {
+						myVideo.play();
+                        
+						videoControls.setAttribute('src', '#pause');
+					} else {
+						myVideo.pause();
+                     
+						videoControls.setAttribute('src', '#play');
+					}
+				});
+			}
+		});
+	</script>
+    
+    
+    <script>
+		AFRAME.registerComponent('play-pause2', {
+			init: function () {
+                var sound1 = document.querySelector('#sound1');
+				var myVideo = document.querySelector('#depressed-video');
+				var videoControls = document.querySelector('#videoControls2');
+				this.el.addEventListener('click', function () {
+					if (myVideo.paused) {
+						myVideo.play();
+                        sound1.pause();
+						videoControls.setAttribute('src', '#pause');
+					} else {
+						myVideo.pause();
+                        sound1.play();
+						videoControls.setAttribute('src', '#play');
+					}
+				});
+			}
+		});
+        
+	</script>
+    
+      
+      
+    <script>
+      
+        document 
+      .querySelector("#shop")
+      .addEventListener("click", e => {
+            location.href= "https://your-art-beat-market.myshopify.com";
+            
+        }) ;
+ 
+    
+      
+    </script>  
+      
+      
+  </head>
+  <body>
+    <a-scene antialias="true" inspector stats 
+             shadow="type: pcfsoft"
+             > 
+        
+    
+        
+   
+        
+        <a-assets>
+        
+        <img id="holo" src="img/holographic2.jpg">
+        <img id="milky" src="img/Milky-Way-Mountain.jpg">
+        <img id="stars" src="img/stars.jpg">
+        <img id="artist" src="img/artist_text_example-01.jpg">
+        <img id="floor" src="img/floor.jpg">
+        
+        <img id="marble" src="img/black-marble.jpg">
+        <img id="concrete" src="img/concrete.jpg">
+        <img id="hdri" src="img/hdri.jpg">
+            
+            
+            <img id="neonframe_artist1" src="img/neon-frame_artist1.png" >    
+        <img id="neonframe_artist2" src="img/neon-frame_artist2.png" >    
+        <img id="neonframe_artist3" src="img/neon-frame_artist3.png" >    
+        <img id="neonframe_artist4" src="img/neon-frame_artist4.png" >
+            
+            
+            <img id="neoncircle_artist4" src="img/neon-circle_artist4.png" >
+            <img id="neoncircle_artist3" src="img/neon-circle_artist3.png" >
+            <img id="neoncircle_artist2" src="img/neon-circle_artist2.png" >
+            <img id="neoncircle_artist1" src="img/neon-circle_artist1.png" >
+            
+        <img id="play" src="img/stars.jpg">
+        <img id="pause" src="img/holographic9.jpg">
+            <img id="artist1_1" src="img/artists/artist4/Zsolt_Gyarmati_%20Breathing_in_Black_2020_Mixed_Media_on_Canvas_40x40_cm.jpg" >
+            
+            <img id="artist1_2" src="img/artists/artist4/Zsolt_Gyarmati_%20Pull_It_2020_Mixed_Media_on_Canvas_150x150_cm.jpg" >
+             
+            <img id="artist1_3" src="img/artists/artist4/Zsolt_Gyarmati_%20Sunday_Chimera-Ballet_2020_Mixed_Media_on_Canvas_150x150_cm.jpg" >
+                        
+            <img id="artist1_4" src="img/artists/artist4/Zsolt_Gyarmati_Alles%20_Unter_Kontrolle_2015_Mixed_Media_on_Canvas_180x156_cm.jpg" >
+            
+        <img id="avatar1" src="img/avatar1.jpg">
+            
+
+        <a-asset-item id="video1" src="img/oldfilm.mp4" preload="auto" loop="true"></a-asset-item>
+
+        
+        </a-assets>   
+         
+        
+
+        <a-box id="shop"></a-box>
+    
+    <a-video src="#video1" width="10" height="5" position="-10 4 -14" >
+			<!-- Play/Pause -->
+			<a-image id="videoControls" src="#play" position="-2.5 -3 0.5" scale="1 1 1"
+					 play-pause>
+			</a-image>
+		</a-video>
+    
+    
+            
+        
+        
+            
+      <!-- camera and cursor -->
+        
+    
+        
+          <a-entity id="cam-rig"  movement-controls="speed: 0.1" position="0 0 0"> 
+       
+      <a-entity camera look-controls wasd-controls position="0 1.6 0">
+        
+    
+          <a-cursor></a-cursor>
+      </a-entity>     
+              
+              
+        </a-entity>
+        
+    <!-- sky hdri     
+        <a-sky src="#hdri"></a-sky> -->   
+        
+        
+<!--
+PROJECT URL
+
+http://localhost:8000/Documents/GitHub/VR_Art_Gallery/room1_test.html -->        
+        
+  
+        
+      <!-- Floor -->
+        
+        <a-plane 
+                 
+                   src="#marble"
+                   repeat="50 50"
+                
+                   side="double"
+                   position="0 0.1 0"
+                   rotation="90 0 90"
+                     
+                   scale="100 100 100" ></a-plane>  
+        
+         
+      <!-- Ceiling  -->
+        
+        <a-plane
+                   src="#concrete"
+                   repeat="10 10"
+                
+                   side="double"
+                   material="roughness: 0.5;"
+                   position="2 6 0.6"
+                   rotation="90 0 90"
+                   geometry="width: 1.26"
+                     
+                   scale="15 15 15" ></a-plane> 
+    
+
+          
+        <!-- ceiling details-->
+        
+      <a-box id="first" position="2.88397 5.27152 -3.06916" height="1" width="10" depth="0.5" rotation="" material="src: #concrete; repeat: 50 10; color: white; ambientOcclusionMap: " shadow="" geometry="width: 20">
+            </a-box>
+          
+          
+          
+          
+          
+    <!-- LIGHTSSSSSSSS -->
+        
+
+        
+    <!-- ambient light -->  
+        <a-entity light="type:ambient; color: #faf4ea; intensity: 0.5; castShadow: false"></a-entity>
+  
+     <!-- directional light -->       
+    
+        <a-entity light="color: #EEE; intensity: 0.4; castShadow: false" position="-2.49201 2.84297 2.7375" visible="" type: directional></a-entity>
+          
+    
+        
+
+        <!--1 left wall big -->
+      <a-box id="first" position="-4 3 -6" height="6" width="30" depth="0.5" rotation="0 90 0" material="src: #concrete; repeat: 50 10; color:grey; opacity:1; " >
+
+      
+      </a-box>
+        
+        
+          
+
+        <!--right wall big -->
+      <a-box id="first" position="9 3 3.6" height="6" width="16" depth="0.5" rotation="0 90 0" material="src: #concrete; repeat: 50 10; color:grey; opacity:1; " >
+
+      
+      </a-box>
+        
+        
+        
+        <!--back wall big --> 
+        <a-box id="first" position="1.80028 3 8.84284" height="6" width="16" depth="0.5" rotation="" material="src:#concrete ; repeat: 50 10; color: grey" geometry="">
+
+      
+      </a-box>
+        
+        
+          
+        <!--front wall big --> 
+        
+        
+        
+        <a-box id="first" position="1.80028 3 -9.06472" height="6" width="16" depth="0.5" rotation="" material="src:#concrete; repeat: 50 10; color: grey" geometry="">
+
+      
+      </a-box>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <!-- wraps around whole artist 1-->
+        
+       <a-entity>
+           
+        
+           
+        <!--111111111  left wall small -->
+        <a-box id="first" position="-3.85 1.5 -7.4" height="3" width="32.5" depth="0.5" rotation="0 90 0" material="src: #concrete; repeat: 50 10; color:#fafafa; opacity:1; " shadow="receive: true">
+       
+        
+            
+         <!-- LINKS -->
+            
+         
+       
+                  
+           <!--SPOTLIGHT LAMPS  /1 --> 
+          
+    <a-entity position="-8.5 -1.7 4.8"  rotation="0 -90 0" >    
+          <!-- lamp base --> 
+       
+          <a-entity light="type: spot; angle: 40; castShadow: true; intensity: 1.1; distance: 3.5; color: white; penumbra: 1; shadowRadius: 5" position="-2.93968 3.17328 0.18013" rotation="-67.71296 69.33892 -86.15337182264136" scale=""></a-entity>
+     
+          
+  </a-entity>  
+          
+  
+            
+            
+            
+            
+            
+         <!-- artist1 info -->
+        <a-box position="-10.4 0 0.26" height="1.9" width="1.4" depth="0.05" rotation="0 0 0"  src="#artist" >
+            
+              <!-- neon frame-->   
+         <a-image src="#neonframe_artist1" scale="2.03 1.48 1.1" position="0 0 0.1" material="" geometry="" rotation="0 0 90"></a-image>
+           
+            
+        <!-- ARTIST BUBBLE 1 -->
+        
+        <a-cylinder position="0 2 0" rotation="0 90 90" radius="0.5" height="0.1" src="#avatar1" 
+                
+                    >
+
+                    <a-cylinder radius="0.6" height="0.05" color="#fafafa"></a-cylinder>   
+                    <a-image src="#neoncircle_artist1" scale="1.2 1.2 1.2" position="0 0.1 0" rotation="90 0 0"></a-image> 
+            
+            
+        </a-cylinder>
+            
+            
+            </a-box>  
+            
+            
+       
+        
+            
+            
+               <!-- artist 1 paintings --> 
+      <a-entity position="0 0 0.1" >
+          
+          <a-box id="mietglied" position="-1.3 0  0.26" rotation="0 0 0" width="1" height="1.2" depth="0.01" material=" src:#artist1_1; color:white; "  >
+              
+              
+          
+                    
+              <a-box position="0 -0.7 0" rotation="0 0 0" width="0.25" height="0.15" depth="0.001" material=" src:#; color:white; " >
+                    
+              </a-box>
+           
+              
+          </a-box>
+          
+          
+          
+          <a-box position="-2.7 0 0.26" rotation="0 0 0" width="1" height="1" depth="0.01" material=" src:#artist1_2; color:white; " >
+                    
+              <a-box position="0 -0.7 0" rotation="0 0 0" width="0.25" height="0.15" depth="0.001" material=" src:#; color:white; " >
+                  
+              </a-box>
+         
+          
+          </a-box>  
+          
+          
+          
+          
+          
+          <a-box position="-4.2 0 0.26" rotation="0 0 0" width="1" height="1" depth="0.01" material=" src:#artist1_3; color:white; " >
+                
+              <a-box position="0 -0.7 0" rotation="0 0 0" width="0.25" height="0.15" depth="0.001" material=" src:#; color:white; " >
+                  
+              </a-box>
+              
+              
+          </a-box>
+          
+          
+          
+          
+          
+          <a-box position="-5.65 0  0.26" rotation="0 0 0" width="1" height="1.2" depth="0.01" material=" src:#artist1_4;  " >
+                       
+              <a-box position="0 -0.7 0" rotation="0 0 0" width="0.25" height="0.15" depth="0.001" material=" src:#; color:white; " >
+                   
+              </a-box>
+           
+          </a-box>
+           
+          <a-box position="-7.8 0  0.26" rotation="0 0 0" width="2.36" height="1.5" depth="0.01" material=" src:#video1; color:white; " autoplay></a-box>
+          
+    
+      </a-entity>    
+        
+      
+           
+           
+           </a-box>
+        
+            
+       
+        </a-entity> 
+    
+        
+     
+                
+        
+        
+        
+        <!-- wraps around whole artist 2-->
+        
+       <a-entity  position="0 0 -5"  rotation="0 -90 0" >
+           
+        
+           
+        <!--111111111  left wall small -->
+        <a-box id="first" position="-3.85 1.5 -8" height="3" width="30" depth="0.5" rotation="0 90 0" material="src: #concrete; repeat: 50 10; color:#fafafa; opacity:1; " shadow="receive: true">
+       
+        
+            
+         
+      
+            
+                  
+           <!--SPOTLIGHT LAMPS  /1 --> 
+          
+    <a-entity position="-8.5 -1.7 4.8"  rotation="0 -90 0" >    
+          <!-- lamp base --> 
+       
+          <a-entity light="type: spot; angle: 40; castShadow: true; intensity: 1.1; distance: 3.5; color: white; penumbra: 1; shadowRadius: 5" position="-2.93968 3.17328 0.18013" rotation="-67.71296 69.33892 -86.15337182264136" scale=""></a-entity>
+     
+          
+  </a-entity>  
+          
+  
+            
+            
+            
+            
+            
+         <!-- artist1 info -->
+        <a-box position="-10.4 0 0.26" height="1.9" width="1.4" depth="0.05" rotation="0 0 0"  src="#artist" >
+            
+              <!-- neon frame-->   
+         <a-image src="#neonframe_artist2" scale="2.03 1.48 1.1" position="0 0 0.1" material="" geometry="" rotation="0 0 90"></a-image>
+           
+            
+        <!-- ARTIST BUBBLE 1 -->
+        
+        <a-cylinder position="0 2 0" rotation="0 90 90" radius="0.5" height="0.1" src="#avatar1" 
+                
+                    >
+
+                    <a-cylinder radius="0.6" height="0.05" color="#fafafa"></a-cylinder>   
+                    <a-image src="#neoncircle_artist2" scale="1.2 1.2 1.2" position="0 0.1 0" rotation="90 0 0"></a-image> 
+            
+            
+        </a-cylinder>
+            
+            
+            </a-box>  
+            
+            
+       
+        
+            
+            
+               <!-- artist 1 paintings --> 
+      <a-entity position="0 0 0.1" >
+          
+          <a-box position="-1.3 0  0.26" rotation="0 0 0" width="1" height="1.2" depth="0.01" material=" src:#artist1_1; color:white; " >
+          
+                    
+              <a-box position="0 -0.7 0" rotation="0 0 0" width="0.25" height="0.15" depth="0.001" material=" src:#; color:white; " >
+                    
+              </a-box>
+           
+              
+          </a-box>
+          
+          
+          
+          <a-box position="-2.7 0 0.26" rotation="0 0 0" width="1" height="1" depth="0.01" material=" src:#artist2_2; color:white; " >
+                    
+              <a-box position="0 -0.7 0" rotation="0 0 0" width="0.25" height="0.15" depth="0.001" material=" src:#; color:white; " >
+                  
+              </a-box>
+         
+          
+          </a-box>  
+          
+          
+          
+          
+          
+          <a-box position="-4.2 0 0.26" rotation="0 0 0" width="1" height="1" depth="0.01" material=" src:#artist2_3; color:white; " >
+                
+              <a-box position="0 -0.7 0" rotation="0 0 0" width="0.25" height="0.15" depth="0.001" material=" src:#; color:white; " >
+                  
+              </a-box>
+              
+              
+          </a-box>
+          
+          
+          
+          
+          
+          <a-box position="-5.65 0  0.26" rotation="0 0 0" width="1" height="1.2" depth="0.01" material=" src:#artist2_4;  " >
+                       
+              <a-box position="0 -0.7 0" rotation="0 0 0" width="0.25" height="0.15" depth="0.001" material=" src:#; color:white; " >
+                   
+              </a-box>
+           
+          </a-box>
+           
+          <a-box position="-7.8 0  0.26" rotation="0 0 0" width="2.36" height="1.5" depth="0.01" material=" src:#video1; color:white; " autoplay></a-box>
+          
+    
+      </a-entity>    
+        
+        </a-box>
+        
+            
+       
+        </a-entity> 
+    
+        
+     
+        
+        
+        
+        
+        
+        
+        
+        
+           
+        <!-- wraps around whole artist 3-->
+        
+       <a-entity  position="5 0 -3.4"  rotation="0 180 0" >
+           
+        
+           
+        <!--111111111  left wall small -->
+        <a-box id="first" position="-3.85 1.5 -10.9" height="3" width="24" depth="0.5" rotation="0 90 0" material="src: #concrete; repeat: 50 10; color:#fafafa; opacity:1; " shadow="receive: true">
+       
+        
+            
+         
+      
+            
+                  
+           <!--SPOTLIGHT LAMPS  /1 --> 
+          
+    <a-entity position="-8.5 -1.7 4.8"  rotation="0 -90 0" >    
+          <!-- lamp base --> 
+       
+          <a-entity light="type: spot; angle: 40; castShadow: true; intensity: 1.1; distance: 3.5; color: white; penumbra: 1; shadowRadius: 5" position="-2.93968 3.17328 0.18013" rotation="-67.71296 69.33892 -86.15337182264136" scale=""></a-entity>
+     
+          
+  </a-entity>  
+          
+  
+            
+            
+            
+            
+            
+         <!-- artist1 info -->
+        <a-box position="-10.4 0 0.26" height="1.9" width="1.4" depth="0.05" rotation="0 0 0"  src="#artist" >
+            
+              <!-- neon frame-->   
+         <a-image src="#neonframe_artist3" scale="2.03 1.48 1.1" position="0 0 0.1" material="" geometry="" rotation="0 0 90"></a-image>
+           
+            
+        <!-- ARTIST BUBBLE 1 -->
+        
+        <a-cylinder position="0 2 0" rotation="0 90 90" radius="0.5" height="0.1" src="#avatar1" 
+                
+                    >
+
+                    <a-cylinder radius="0.6" height="0.05" color="#fafafa"></a-cylinder>   
+                    <a-image src="#neoncircle_artist3" scale="1.2 1.2 1.2" position="0 0.1 0" rotation="90 0 0"></a-image> 
+            
+            
+        </a-cylinder>
+            
+            
+            </a-box>  
+            
+            
+       
+        
+            
+            
+               <!-- artist 1 paintings --> 
+      <a-entity position="0 0 0.1" >
+          
+          <a-box position="-1.3 0  0.26" rotation="0 0 0" width="1" height="1.2" depth="0.01" material=" src:#artist3_1; color:white; " >
+          
+                    
+              <a-box position="0 -0.7 0" rotation="0 0 0" width="0.25" height="0.15" depth="0.001" material=" src:#; color:white; " >
+                    
+              </a-box>
+           
+              
+          </a-box>
+          
+          
+          
+          <a-box position="-2.7 0 0.26" rotation="0 0 0" width="1" height="1" depth="0.01" material=" src:#artist3_2; color:white; " >
+                    
+              <a-box position="0 -0.7 0" rotation="0 0 0" width="0.25" height="0.15" depth="0.001" material=" src:#; color:white; " >
+                  
+              </a-box>
+         
+          
+          </a-box>  
+          
+          
+          
+          
+          
+          <a-box position="-4.2 0 0.26" rotation="0 0 0" width="1" height="1" depth="0.01" material=" src:#artist3_3; color:white; " >
+                
+              <a-box position="0 -0.7 0" rotation="0 0 0" width="0.25" height="0.15" depth="0.001" material=" src:#; color:white; " >
+                  
+              </a-box>
+              
+              
+          </a-box>
+          
+          
+          
+          
+          
+          <a-box position="-5.65 0  0.26" rotation="0 0 0" width="1" height="1.2" depth="0.01" material=" src:#artist3_4;  " >
+                       
+              <a-box position="0 -0.7 0" rotation="0 0 0" width="0.25" height="0.15" depth="0.001" material=" src:#; color:white; " >
+                   
+              </a-box>
+           
+          </a-box>
+           
+          <a-box position="-7.8 0  0.26" rotation="0 0 0" width="2.36" height="1.5" depth="0.01" material=" src:#video1; color:white; " autoplay></a-box>
+          
+    
+      </a-entity>    
+        
+        </a-box>
+        
+            
+       
+        </a-entity> 
+    
+        
+     
+        
+        
+        
+        
+        
+        
+        
+                
+        <!-- wraps around whole artist 4-->
+        
+       <a-entity  position="4.5 0 2"  rotation="0 90 0" >
+           
+        
+           
+        <!--111111111  left wall small -->
+        <a-box id="first" position="-6.6 1.5 -8" height="3" width="25" depth="0.5" rotation="0 90 0" material="src: #concrete; repeat: 50 10; color:#fafafa; opacity:1; " shadow="receive: true">
+       
+        
+            
+         
+      
+            
+                  
+           <!--SPOTLIGHT LAMPS  /1 --> 
+          
+    <a-entity position="-8.5 -1.7 4.8"  rotation="0 -90 0" >    
+          <!-- lamp base --> 
+       
+          <a-entity light="type: spot; angle: 40; castShadow: true; intensity: 1.1; distance: 3.5; color: white; penumbra: 1; shadowRadius: 5" position="-2.93968 3.17328 0.18013" rotation="-67.71296 69.33892 -86.15337182264136" scale=""></a-entity>
+     
+          
+  </a-entity>  
+          
+  
+            
+            
+            
+            
+            
+         <!-- artist1 info -->
+        <a-box position="-10.4 0 0.26" height="1.9" width="1.4" depth="0.05" rotation="0 0 0"  src="#artist" >
+            
+              <!-- neon frame-->   
+         <a-image src="#neonframe_artist4" scale="2.03 1.48 1.1" position="0 0 0.1" material="" geometry="" rotation="0 0 90"></a-image>
+           
+            
+        <!-- ARTIST BUBBLE 1 -->
+        
+        <a-cylinder position="0 2 0" rotation="0 90 90" radius="0.5" height="0.1" src="#avatar1" 
+                
+                    >
+
+                    <a-cylinder radius="0.6" height="0.05" color="#fafafa"></a-cylinder>   
+                    <a-image src="#neoncircle_artist4" scale="1.2 1.2 1.2" position="0 0.1 0" rotation="90 0 0"></a-image> 
+            
+            
+        </a-cylinder>
+            
+            
+            </a-box>  
+            
+            
+       
+        
+            
+            
+               <!-- artist 1 paintings --> 
+      <a-entity position="0 0 0.1" >
+          
+          <a-box position="-1.3 0  0.26" rotation="0 0 0" width="1" height="1.2" depth="0.01" material=" src:#artist4_1; color:white; " >
+          
+                    
+              <a-box position="0 -0.7 0" rotation="0 0 0" width="0.25" height="0.15" depth="0.001" material=" src:#; color:white; " >
+                    
+              </a-box>
+           
+              
+          </a-box>
+          
+          
+          
+          <a-box position="-2.7 0 0.26" rotation="0 0 0" width="1" height="1" depth="0.01" material=" src:#artist4_2; color:white; " >
+                    
+              <a-box position="0 -0.7 0" rotation="0 0 0" width="0.25" height="0.15" depth="0.001" material=" src:#; color:white; " >
+                  
+              </a-box>
+         
+          
+          </a-box>  
+          
+          
+          
+          
+          
+          <a-box position="-4.2 0 0.26" rotation="0 0 0" width="1" height="1" depth="0.01" material=" src:#artist4_3; color:white; " >
+                
+              <a-box position="0 -0.7 0" rotation="0 0 0" width="0.25" height="0.15" depth="0.001" material=" src:#; color:white; " >
+                  
+              </a-box>
+              
+              
+          </a-box>
+          
+          
+          
+          
+          
+          <a-box position="-5.65 0  0.26" rotation="0 0 0" width="1" height="1.2" depth="0.01" material=" src:#artist4_4;  " >
+                       
+              <a-box position="0 -0.7 0" rotation="0 0 0" width="0.25" height="0.15" depth="0.001" material=" src:#; color:white; " >
+                   
+              </a-box>
+           
+          </a-box>
+           
+          <a-box position="-7.8 0  0.26" rotation="0 0 0" width="2.36" height="1.5" depth="0.01" material=" src:#video1; color:white; " autoplay></a-box>
+          
+    
+      </a-entity>    
+        
+        </a-box>
+        
+            
+       
+        </a-entity> 
+    
+        
+     
+        
+        
+        
+        
+         
+        
+        
+      
+        
+        
+        
+        
+        
+        
+        
+     
+        
+           
+  
+    </a-scene>
+  </body>
+</html>
