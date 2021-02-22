@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>video code test </title>
+    <meta name="description" content="Hello, WebVR! • A-Frame">
+    <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
+      
+    <script src="https://rawgit.com/oscarmarinmiro/aframe-video-controls/master/dist/aframe-video-controls.min.js"></script>  
+
+<script>
+		AFRAME.registerComponent('play-pause', {
+			init: function () {
+				var sound1 = document.querySelector('#sound1');
+                var myVideo = document.querySelector('#artist_1');
+				var videoControls = document.querySelector('#videoControls');
+				this.el.addEventListener('click', function () {
+					if (myVideo.paused) {
+						myVideo.play();
+                        sound1.pause();
+						videoControls.setAttribute('src', '#pause');
+					} else {
+						myVideo.pause();
+                        sound1.play();
+						videoControls.setAttribute('src', '#play');
+					}
+				});
+			}
+		});
+	</script>
+      
+
+      
+    <script>
+		AFRAME.registerComponent('play-pause2', {
+			init: function () {
+                var sound1 = document.querySelector('#sound1');
+				var myVideo = document.querySelector('#artist_2');
+				var videoControls = document.querySelector('#videoControls2');
+				this.el.addEventListener('click', function () {
+					if (myVideo.paused) {
+						myVideo.play();
+                        sound1.pause();
+						videoControls.setAttribute('src', '#pause');
+					} else {
+						myVideo.pause();
+                        sound1.play();
+						videoControls.setAttribute('src', '#play');
+					}
+				});
+			}
+		});
+	</script>
+       
+      
+  </head>
+  <body>
+    <a-scene antialias="true" inspector stats 
+             shadow="type: pcfsoft"
+             > 
+        
+   <a-sky color="blue"></a-sky> 
+        
+   
+        
+        <a-assets>
+    <!--    
+        <img id="holo" src="img/holographic2.jpg">
+        <img id="milky" src="img/Milky-Way-Mountain.jpg">
+        <img id="stars" src="img/stars.jpg">
+        <img id="artist" src="img/artist_text_example-01.jpg">
+        <img id="floor" src="img/floor.jpg"> -->
+            
+            
+        
+        <img id="play" src="img/play-button.png">
+        <img id="pause" src="img/pause-button.png">
+            
+           
+        <video id="artist_1" src="img/artists/artist1/Zsolt_Gyarmati_1.mp4" ></video>  
+            
+        <video id="artist_2" src="img/artists/artist1/Zsolt_Gyarmati_1.mp4" ></video>        
+            
+        <video id="artist_3" src="img/oldfilm.mp4" ></video>
+        
+        </a-assets>   
+         
+        
+    
+    <a-video src="#artist_1" width="1.77" height="1" position="0 2 -2">
+			<!-- Play/Pause -->
+			<a-image id="videoControls" src="#play" position="0 -0.7 0" scale="0.2 0.2 0.2"
+					 play-pause>
+			</a-image>
+          <a-image id="videoControls" src="#pause" position="0 -0.7 0" scale="0.2 0.2 0.2"
+					 play-pause>
+			</a-image>
+		</a-video>
+    
+          
+    <a-video src="#artist_2" width="1.77" height="1" position="-3 2 -2">
+			<!-- Play/Pause -->
+			<a-image id="videoControls2" src="#play" position="0 -0.7 0" scale="0.2 0.2 0.2"
+					 play-pause2>
+			</a-image>
+		</a-video>
+    
+      
+ 
+   
+        
+            
+      <!-- camera and cursor -->
+        
+    
+        
+          <a-entity id="cam-rig"  movement-controls="speed: 0.1" position="0 0 0"> 
+       
+      <a-entity camera look-controls wasd-controls position="0 1.6 0">
+        
+    
+          <a-cursor></a-cursor>
+      </a-entity>     
+              
+              
+        </a-entity>
+
+     
+        
+           
+  
+    </a-scene>
+
+    <script>
+      
+        //********** Hier unten die Scipts, die verlinken. Diese können nur gehen, wenn vorher da Object da ist. OMG ES KLAPPT ENDLICH !!! DANKE *****/
+
+        document.querySelector("#shop").addEventListener("click", e => {
+            location.href= "https://your-art-beat-market.myshopify.com";
+        }) ;
+ 
+    
+      
+    </script>  
+
+  </body>
+</html>

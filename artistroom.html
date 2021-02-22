@@ -109,10 +109,19 @@
         <img id="stars" src="img/stars.jpg">
         <img id="artist" src="img/artist_text_example-01.jpg">
         <img id="floor" src="img/floor.jpg"> -->
-        
+            
+            
+            
+                        
+        <a-asset-item id="spotlight" src="img/spotlight.obj"></a-asset-item>
+            
+        <a-asset-item id="spotlightmtl" src="img/spotlight.mtl"></a-asset-item>     
+
+
         <img id="marble" src="img/black-marble.jpg">
         <img id="concrete" src="img/concrete.jpg">
         <img id="hdri" src="img/hdri.jpg">
+        
             
             
         <img id="neonframe_artist1" src="img/neon-frame_artist1.png" >    
@@ -337,11 +346,40 @@ http://localhost:8000/Documents/GitHub/VR_Art_Gallery/room1_test.html -->
         <!--111111111  left wall small -->
         <a-box id="first" position="-3.85 1.5 -7.4" height="3" width="32.5" depth="0.5" rotation="0 90 0" material="src: #concrete; repeat: 50 10; color:#fafafa; opacity:1; " shadow="receive: true">
        
+            
+            
+            
         
             
-         <!-- LINKS -->
+         <!-- LAMPS -->
             
-         
+            <a-entity position="-8.5 -1.7 4.8"  rotation="0 -90 0" >    
+          <!-- lamp base --> 
+        <a-box  position="-3.01711 3.49427 -0.98934" height="1" width="10" depth="0.5" rotation="0 90 0" material="src: repeat: 50 10; color: #bd2828"  geometry="height: 0.1; width: 3; depth: 0.2">
+            </a-box>
+        <!-- lamp 1-->
+          <a-obj-model src="#spotlight" mtl="#spotlightmtl"  rotation="0 -114 0" position="-3 3.23 0.16" scale="0.8 0.8 0.8"></a-obj-model>
+          
+          <a-entity light="type: spot; angle: 40; castShadow: true; intensity: 1.1; distance: 3.5; color: white; penumbra: 1; shadowRadius: 5" position="-3 3 0.18013" rotation="-67.7 69.3 -86.1" scale=""></a-entity>
+          
+          <a-cylinder position="-3 6 -0.2" radius="0.01" height="5" segments-height="1" segments-radial="4"></a-cylinder>
+          
+          
+          
+          
+         <!-- lamp 2-->
+          <a-obj-model src="#spotlight" mtl="#spotlightmtl"  rotation="0 -70 0" position="-3 3.23 -2"></a-obj-model>
+          
+          <a-entity light="type: spot; angle: 40; castShadow: true; intensity: 1.1; distance: 3.5; color: white; penumbra: 1; shadowRadius: 5" position="-3 3.1 -2.1" rotation="-67.7 69.3 -86" scale=""></a-entity>
+          
+          <a-cylinder position="-3 6 -1.6" radius="0.01" height="5" segments-height="1" segments-radial="4"></a-cylinder>
+          
+        <!-- spotlight ceiling-->
+        
+          <a-entity light="type: spot; angle: 40; castShadow: true; intensity: 1.1; distance: 3.5; color: white; penumbra: 1; shadowRadius: 5" position="-3 3.1 0.18013" rotation="70 6.7 169.5" scale="" visible="true"></a-entity>
+          
+  </a-entity>  
+            
        
                   
            <!--SPOTLIGHT LAMPS  /1 --> 
