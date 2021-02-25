@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>ROOM 2 // ARTISTS </title>
+    <title>PROJECT ROOM </title>
     <meta name="description" content="Hello, WebVR! • A-Frame">
     <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
 
@@ -37,14 +37,14 @@
        
         <img id="floor" src="assets/texture_concrete1_shadow_2000x2000.jpg">
         <img id="ceiling" src="assets/texture_ceiling_light_1000x1000.jpg">
-        <img id="artist1" src="assets/artist1_Montage.jpg">
+        <img id="artist1" src="assets/project_room/projekt1_1_Montage.jpg">
         <img id="artist2" src="assets/artist2_Montage.jpg">
-        <img id="artist3" src="assets/artist3_Montage.jpg">
+        <img id="artist3" src="assets/project_room/projekte3_Montage.jpg">
         <img id="artist4" src="assets/artist4_Montage.jpg">
 
 
-        <video id="video1" preload="auto" src="assets/" autoplay crossOrigin="anonymous"></video>
-        <video id="video2" preload="auto" src="assets/artist2.mp4" autoplay crossOrigin="anonymous"></video>
+        <video id="video1" preload="auto" src="assets/project_room/project1_video1_1.mp4" autoplay crossOrigin="anonymous"></video>
+        <video id="video3" preload="auto" src="assets/project_room/project3_video1_1.mp4" autoplay crossOrigin="anonymous"></video>
 
         
         </a-assets>   
@@ -84,17 +84,21 @@
         <a-box  position="4.5 1.5 -24.55" rotation="0 -17 0" width="6.1" height="3" depth="0.2" material="color:#aaa;"></a-box>
 
 
+        
+        
+        
         <!-- Artists Stellwände-->
         <a-box  id="chart1" position="-5.5 1.5 -17.5" rotation="0 17 0" width="6" height="3" depth="0.2" material="src: #artist1; color:#aaa;"></a-box>
-        <a-box  id="chart2" position="5.5 1.5 -17.5" rotation="0 -17 0" width="6" height="3" depth="0.2" material="src: #artist2; color:#aaa;"></a-box>
+        <a-box  id="chart2" position="5.5 1.5 -17.5" rotation="0 -17 0" width="6" height="3" depth="0.2" material="src: #artist1; color:#aaa;"></a-box>
         <a-box  id="chart3" position="-4.5 1.5 -24.5" rotation="0 17 0" width="6" height="3" depth="0.2" material="src: #artist3; color:#aaa;"></a-box>
         <a-box  id="chart4" position="4.5 1.5 -24.5" rotation="0 -17 0" width="6" height="3" depth="0.2" material="src: #artist4; color:#aaa;"></a-box>
 
+        
         <!-- Artists Video-->
         <a-entity id="player1" material="shader: flat; src: #video1" geometry="primitive: plane; width: 0.8; height: 0.45;" position="-7.85 0.95 -16.65" rotation="0 17 0" visible="true" play-on-click>
         </a-entity>
 
-        <a-entity id="player2" material="shader: flat; src: #video2" geometry="primitive: plane; width: 1.2; height: 0.7;" position="4.55 1.8 -17.6" rotation="0 -17 0" visible="true" play-on-click>
+        <a-entity id="player2" material="shader: flat; src: #video2" geometry="primitive: plane; width: 1.6; height: 1;" position="-3.5 1.4 -24.3" rotation="0 17 0" visible="true" play-on-click>
         </a-entity>
 
   
