@@ -5,36 +5,78 @@
     <title>HEART ROOM </title>
     <meta name="description" content="Hello, WebVR! • A-Frame">
     <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
-
+    
      
-
-    <script>
+ <script>
 
                     AFRAME.registerComponent('play-on-click', {
                         init: function () {
-                            console.log('init');
+                            console.log('init video player');
                             this.onClick = this.onClicker.bind(this);
                             this.el.addEventListener('click', this.onClicker);
                         },
                         onClicker: function (evt) {
                                 var videoEl = this.getAttribute('material').src;
                                     if (videoEl.paused) {
-                                    videoEl.play(); 
+                                      videoEl.play(); 
+                                        this.querySelector('#play').setAttribute('visible','false');
+                                        this.querySelector('#pause').setAttribute('visible','true');
                                     } else { 
                                         videoEl.pause(); 
+                                          this.querySelector('#play').setAttribute('visible','true');
+                                          this.querySelector('#pause').setAttribute('visible','false');
                                     } 
                         }
                     });
 
-        
-    </script>
+</script>
+
+      
+    <style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
       
   </head>
   <body>
-    <a-scene antialias="true" inspector stats shadow="type: pcfsoft" > 
-         
+      
+
+
+        
+
+    <a-scene antialias="true" inspector  shadow="type: pcfsoft"   > 
+
+  
         <a-assets>
        
+          
+            
         <img id="floor" src="assets/texture_concrete1_shadow_2000x2000.jpg">
         <img id="ceiling" src="assets/texture_ceiling_light_1000x1000.jpg">
         <img id="artist1" src="assets/heart_room/projekte_Montage2.jpg">
@@ -77,26 +119,32 @@
                      
                    scale="100 100 100" ></a-plane>  
         
-
-
+        
+                  
+                  
+        
+<a-entity position="0 0 14" >
 
         <a-box  id="basement" position="0 0.1 -20" rotation="0 0 0" width="20" height="0.1" depth="20" material="src: #floor; repeat: 1 1; color:#fafafa;" shadow="receive: true"></a-box>
 
         <a-box  id="roof" position="0 6 -20" rotation="0 0 0" width="15" height="0.1" depth="15" material="src: #ceiling; repeat: 1 1; color:#fafafa;" shadow="receive: true"></a-box>
 
-         <!-- Rückseiten-->
+ 
+<a-entity  position="0 0 -3">       
+
+        
+        <!-- Rückseiten-->
         <a-box  position="-5.5 1.5 -17.55" rotation="0 17 0" width="6.1" height="3" depth="0.2" material="color:#aaa;"></a-box>
         <a-box  position="5.5 1.5 -17.55" rotation="0 -17 0" width="6.1" height="3" depth="0.2" material="color:#aaa;"></a-box>
         
         <!--
         <a-box  position="-4.5 1.5 -24.55" rotation="0 17 0" width="6.1" height="3" depth="0.2" material="color:#aaa;"></a-box>
-        <a-box  position="4.5 1.5 -24.55" rotation="0 -17 0" width="6.1" height="3" depth="0.2" material="color:#aaa;"></a-box>
-
+        <a-box  position="4.5 1.5 -24.55" rotation="0 -17 0" width="6.1" height="3" depth="0.2" material="color:#aaa;"></a-box> -->
 
         <!-- Artists Stellwände-->
         <a-box  id="chart1" position="-5.5 1.5 -17.5" rotation="0 17 0" width="6" height="3" depth="0.2" material="src: #artist1; color:#aaa;">
         
-                <a-box id="artbeatweb" position=" -1 -0.9 0.1" rotation="0 0 0" width="1" height="0.2" depth="0.1" material="src: #link1; color:#aaa;" ></a-box>
+                <a-box id="artbeatweb" position=" -1 -0.9 0.1" rotation="0 0 0" width="1" height="0.2" depth="0.1" material="src: #link1; color:#aaa;" target="_blank"></a-box>
          
         </a-box>
         
@@ -110,12 +158,19 @@
 
         <!-- Artists Video-->
         <a-entity id="player1" material="shader: flat; src: #video1" geometry="primitive: plane; width: 2.56; height: 1.38;" position="-6.49 1.5 -16.9" rotation="0 17 0" visible="true" play-on-click>
+            
+           <a-image id="play" src="assets/buttons/play.png" width="2.56" height="1.38" visible="true"></a-image>
+          <a-image id="pause" src="assets/buttons/pause.png" width="2.56" height="1.38" visible="false"></a-image>
         </a-entity>
         
         <a-entity id="player2" material="shader: flat; src: #video2" geometry="primitive: plane; width: 2.56; height: 1.38;" position="-3.9 1.5 -17.83" rotation="0 17 0" visible="true" play-on-click>
+            
+           <a-image id="play" src="assets/buttons/play.png" width="2.56" height="1.38" visible="true"></a-image>
+          <a-image id="pause" src="assets/buttons/pause.png" width="2.56" height="1.38" visible="false"></a-image>
         </a-entity>
         
         
+       
       
         <!-- Heart 3d model-->  
         
@@ -124,11 +179,23 @@
                     
         ></a-gltf-model>
      
-        <a-cylinder position="0 0 -16.7" height="0.7" radius="1.3" segments-radial="60" material="color:#aaa;" ></a-cylinder>
-     
+        <a-cylinder position="0 0 -16.7" height="0.7" radius="1.3" segments-radial="60" material="color:#aaa;" >
+
+        </a-cylinder>
+    </a-entity> 
+ </a-entity>       
+                         
+<div class="topnav">
+  <a class="active" href="/artistroom2.html">Home</a>
+  <a href="https://www.google.com/search?channel=trow2&client=firefox-b-d&q=club+quarantine">News</a>
+  <a href="#contact">Contact</a>
+  <a href="#about">About</a>
+</div>
 
     </a-scene>
 
+
+      
     <script>
       
 
@@ -146,5 +213,6 @@
       
     </script>  
 
+
   </body>
-</html>7
+</html>
