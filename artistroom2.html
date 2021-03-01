@@ -12,7 +12,7 @@
 
                     AFRAME.registerComponent('play-on-click', {
                         init: function () {
-                            console.log('initx');
+                            console.log('init video player');
                             this.onClick = this.onClicker.bind(this);
                             this.el.addEventListener('click', this.onClicker);
                         },
@@ -34,19 +34,24 @@
 
                   <script>
 
-              AFRAME.registerComponent('mover', {
+
+                    AFRAME.registerComponent("mover", {
+                        init: function() {
+                        this.el.addEventListener("click", (e)=>{console.log("HELLO")})
+                        }
+                    })
+
+
+
+
+                  AFRAME.registerComponent('moveralt', {
                         init: function() {
                         console.log('kamerageht');
 
                         this.mouseup = true;
                         this.player = document.querySelector("#camera")
-                        window.addEventListener("mousedown", (e)=>{
-
-                        this.mouseup = false
-                        })
-                        window.addEventListener("mouseup", (e)=>{
-                        this.mouseup = true
-                        })
+                        
+                 
                         },
                       tick: function() {
                           if (!this.mouseup) {
@@ -62,11 +67,39 @@
                   });
 
 
+      
+                  // var elem = document.getElementById("forward");
+                  //               elem.addEventListener("mousedown", mouseDown);
+                  //               elem.addEventListener("mouseup", mouseUp);		
+                            
+                  //               function mouseDown() {
+                  //               elem.innerHTML = 'Maustaste wurde gedrückt.';
+                  //               }
+                            
+                  //               function mouseUp() {
+                  //                 elem.innerHTML = 'Maustaste wurde losgelassen.';
+                  //               }
+
+
+
+
                   </script>
 
                 
 
-                
+               <style>
+
+                  /* #forward{
+                    position: absolute;
+                    background-color: blue;
+                    width: 5rem;
+                    height: 5rem;
+                    z-index: 10000000;
+                    bottom: 1rem;
+                    left: 1rem;
+                  } */
+
+               </style> 
 
 
 
@@ -77,7 +110,11 @@
       
   </head>
   <body>
-    <a-scene antialias="true" inspector stats shadow="type: pcfsoft" > 
+
+
+
+
+    <a-scene antialias="true" inspector stats shadow="type: pcfsoft" cursor="rayOrigin: mouse" > 
     <a-sky color="#000"></a-sky>
         <a-assets>
        
@@ -100,9 +137,9 @@
 
 
 
-            <a-entity id="camera" mover camera look-controls wasd-controls position="0 1.7 -5">
+            <a-entity id="camera"  camera look-controls wasd-controls position="0 1.7 -5">
               <a-cursor></a-cursor>
-              <a-box  position="0 -1 -1.5" rotation="0 0 0" width="0.2" height="0.01" depth="0.2" material="color:red;"></a-box>
+              <a-box mover position="0 -1 -1.5" rotation="0 0 0" width="0.2" height="0.01" depth="0.2" material="color:red;"></a-box>
             </a-entity>     
               
 
@@ -158,9 +195,6 @@
     </a-scene>
 
     <script>
-      
-
-
 
 
       
