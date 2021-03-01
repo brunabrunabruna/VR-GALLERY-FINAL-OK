@@ -12,27 +12,110 @@
 
                     AFRAME.registerComponent('play-on-click', {
                         init: function () {
-                            console.log('init');
+                            console.log('init video player');
                             this.onClick = this.onClicker.bind(this);
                             this.el.addEventListener('click', this.onClicker);
                         },
                         onClicker: function (evt) {
                                 var videoEl = this.getAttribute('material').src;
                                     if (videoEl.paused) {
-                                    videoEl.play(); 
+                                      videoEl.play(); 
+                                        this.querySelector('#play').setAttribute('visible','false');
+                                        this.querySelector('#pause').setAttribute('visible','true');
                                     } else { 
                                         videoEl.pause(); 
+                                          this.querySelector('#play').setAttribute('visible','true');
+                                          this.querySelector('#pause').setAttribute('visible','false');
                                     } 
                         }
                     });
 
-        
-    </script>
+                  </script>
+
+                  <script>
+
+
+                    AFRAME.registerComponent("mover", {
+                        init: function() {
+                        this.el.addEventListener("click", (e)=>{console.log("HELLO")})
+                        }
+                    })
+
+
+
+
+                  AFRAME.registerComponent('moveralt', {
+                        init: function() {
+                        console.log('kamerageht');
+
+                        this.mouseup = true;
+                        this.player = document.querySelector("#camera")
+                        
+                 
+                        },
+                      tick: function() {
+                          if (!this.mouseup) {
+                            var angle = this.player.getAttribute("rotation")
+                            var x = 0.1 * Math.cos(angle.y * Math.PI / 180)
+                            var y = 0.1 * Math.sin(angle.y * Math.PI / 180)
+                            var pos = this.player.getAttribute("position")
+                            pos.x -= y;
+                            pos.z -= x;
+                          this. player.setAttribute("position", pos);
+                          }
+                        }
+                  });
+
+
+      
+                  // var elem = document.getElementById("forward");
+                  //               elem.addEventListener("mousedown", mouseDown);
+                  //               elem.addEventListener("mouseup", mouseUp);		
+                            
+                  //               function mouseDown() {
+                  //               elem.innerHTML = 'Maustaste wurde gedrückt.';
+                  //               }
+                            
+                  //               function mouseUp() {
+                  //                 elem.innerHTML = 'Maustaste wurde losgelassen.';
+                  //               }
+
+
+
+
+                  </script>
+
+                
+
+               <style>
+
+                  /* #forward{
+                    position: absolute;
+                    background-color: blue;
+                    width: 5rem;
+                    height: 5rem;
+                    z-index: 10000000;
+                    bottom: 1rem;
+                    left: 1rem;
+                  } */
+
+               </style> 
+
+
+
+
+
+
+
       
   </head>
   <body>
-    <a-scene antialias="true" inspector stats shadow="type: pcfsoft" > 
-         
+
+
+
+
+    <a-scene antialias="true" inspector stats shadow="type: pcfsoft" cursor="rayOrigin: mouse" > 
+    <a-sky color="#000"></a-sky>
         <a-assets>
        
         <img id="floor" src="assets/texture_concrete1_shadow_2000x2000.jpg">
@@ -49,19 +132,20 @@
         
         </a-assets>   
 
-      <!-- camera and cursor -->
-        
-        <a-entity id="cam-rig"  movement-controls="speed: 0.1" position="0 0 0"> 
-        <a-entity camera look-controls wasd-controls position="0 1.7 0">
-        <a-cursor></a-cursor>
-         </a-entity>     
+
+
+
+
+
+            <a-entity id="camera"  camera look-controls wasd-controls position="0 1.7 -5">
+              <a-cursor></a-cursor>
+              <a-box mover position="0 -1 -1.5" rotation="0 0 0" width="0.2" height="0.01" depth="0.2" material="color:red;"></a-box>
+            </a-entity>     
               
-              
-        </a-entity>
+
  
-  
        
-        <a-plane material="color:#cccccc;"
+        <a-plane material="color:#000;"
                    repeat="50 50"
                 
                    side="double"
@@ -92,28 +176,27 @@
 
         <!-- Artists Video-->
         <a-entity id="player1" material="shader: flat; src: #video1" geometry="primitive: plane; width: 0.8; height: 0.45;" position="-7.85 0.95 -16.65" rotation="0 17 0" visible="true" play-on-click>
+      
+          <a-image id="play" src="assets/buttons/play.png" width="0.8" height="0.45" visible="true"></a-image>
+          <a-image id="pause" src="assets/buttons/pause.png" width="0.8" height="0.45" visible="false"></a-image>
+
         </a-entity>
 
         <a-entity id="player2" material="shader: flat; src: #video2" geometry="primitive: plane; width: 1.2; height: 0.7;" position="4.55 1.8 -17.6" rotation="0 -17 0" visible="true" play-on-click>
+        
+                <a-image id="play" src="assets/buttons/play.png" width="1.2" height="0.7" visible="true"></a-image>
+                <a-image id="pause" src="assets/buttons/pause.png" width="1.2" height="0.7" visible="false"></a-image>
+
         </a-entity>
 
   
+
+
     </a-scene>
 
     <script>
-      
 
 
-
-
-
-        //********** Hier unten die Scipts, die verlinken. Diese können nur gehen, wenn vorher da Object da ist. OMG ES KLAPPT ENDLICH !!! DANKE *****/
-
-        document.querySelector("#shop").addEventListener("click", e => {
-            location.href= "https://your-art-beat-market.myshopify.com";
-        }) ;
- 
-    
       
     </script>  
 
