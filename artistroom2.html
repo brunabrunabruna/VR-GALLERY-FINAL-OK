@@ -5,11 +5,10 @@
     <title>ROOM 2 // ARTISTS </title>
     <meta name="description" content="Hello, WebVR! • A-Frame">
     <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
-   
 
      
 
-                   <script>
+    <script>
 
                     AFRAME.registerComponent('play-on-click', {
                         init: function () {
@@ -36,18 +35,23 @@
                   <script>
 
 
-                    AFRAME.registerComponent("move_forward", {
+                    AFRAME.registerComponent("mover", {
                         init: function() {
+                        this.el.addEventListener("click", (e)=>{console.log("HELLO")})
+                        }
+                    })
+
+
+
+
+                  AFRAME.registerComponent('moveralt', {
+                        init: function() {
+                        console.log('kamerageht');
+
                         this.mouseup = true;
                         this.player = document.querySelector("#camera")
-                        this.el.addEventListener("mousedown", (e)=>{
-                          console.log("unten");
-                          this.mouseup = false;
-                        })
-                        this.el.addEventListener("mouseup", (e)=>{
-                          console.log("oben");
-                          this.mouseup = true;
-                        })
+                        
+                 
                         },
                       tick: function() {
                           if (!this.mouseup) {
@@ -57,94 +61,10 @@
                             var pos = this.player.getAttribute("position")
                             pos.x -= y;
                             pos.z -= x;
-                            this.player.setAttribute("position", pos);
+                          this. player.setAttribute("position", pos);
                           }
                         }
-                    })
-
-
-                    AFRAME.registerComponent("move_backward", {
-                        init: function() {
-                        this.mouseup2 = true;
-                        this.player2 = document.querySelector("#camera")
-                        this.el.addEventListener("mousedown", (e)=>{
-                          console.log("hinten gedrückt");
-                          this.mouseup2 = false;
-                        })
-                        this.el.addEventListener("mouseup", (e)=>{
-                          console.log("hinten losgelassen");
-                          this.mouseup2 = true;
-                        })
-                        },
-                      tick: function() {
-                          if (!this.mouseup2) {
-                            var angle = this.player2.getAttribute("rotation")
-                            var x = 0.1 * Math.cos(angle.y * Math.PI / 180)
-                            var y = 0.1 * Math.sin(angle.y * Math.PI / 180)
-                            var pos = this.player2.getAttribute("position")
-                            pos.x += y;
-                            pos.z += x;
-                            this.player2.setAttribute("position", pos);
-                          }
-                        }
-                    })
-
-
-                    AFRAME.registerComponent("move_left", {
-                        init: function() {
-                        this.mouseup3 = true;
-                        this.player3 = document.querySelector("#camera")
-                        this.el.addEventListener("mousedown", (e)=>{
-                          console.log("hinten gedrückt");
-                          this.mouseup3 = false;
-                        })
-                        this.el.addEventListener("mouseup", (e)=>{
-                          console.log("hinten losgelassen");
-                          this.mouseup3 = true;
-                        })
-                        },
-                      tick: function() {
-                          if (!this.mouseup3) {
-                            var angle = this.player3.getAttribute("rotation")
-                            var x = 0.1 * Math.cos(angle.y * Math.PI / 180)
-                            var y = 0.1 * Math.sin(angle.y * Math.PI / 180)
-                            var pos = this.player3.getAttribute("position")
-                            pos.x -= x;
-                            pos.z += y;
-                            this.player3.setAttribute("position", pos);
-                          }
-                        }
-                    })
- 
-                    AFRAME.registerComponent("move_right", {
-                        init: function() {
-                        this.mouseup4 = true;
-                        this.player4 = document.querySelector("#camera")
-                        this.el.addEventListener("mousedown", (e)=>{
-                          console.log("hinten gedrückt");
-                          this.mouseup4 = false;
-                        })
-                        this.el.addEventListener("mouseup", (e)=>{
-                          console.log("hinten losgelassen");
-                          this.mouseup4 = true;
-                        })
-                        },
-                      tick: function() {
-                          if (!this.mouseup4) {
-                            var angle = this.player4.getAttribute("rotation")
-                            var x = 0.1 * Math.cos(angle.y * Math.PI / 180)
-                            var y = 0.1 * Math.sin(angle.y * Math.PI / 180)
-                            var pos = this.player4.getAttribute("position")
-                            pos.x += x;
-                            pos.z -= y;
-                            this.player4.setAttribute("position", pos);
-                          }
-                        }
-                    })
-
-
-
-       
+                  });
 
 
       
@@ -167,6 +87,20 @@
 
                 
 
+               <style>
+
+                  /* #forward{
+                    position: absolute;
+                    background-color: blue;
+                    width: 5rem;
+                    height: 5rem;
+                    z-index: 10000000;
+                    bottom: 1rem;
+                    left: 1rem;
+                  } */
+
+               </style> 
+
 
 
 
@@ -184,12 +118,10 @@
     <a-sky color="#000"></a-sky>
         <a-assets>
        
-        <img id="up" src="assets/buttons/up.png">
-
-        <img id="floor" src="assets/floor4.jpg">
-        <img id="ceiling" src="assets/texture_ceiling_2.jpg">
+        <img id="floor" src="assets/texture_concrete1_shadow_2000x2000.jpg">
+        <img id="ceiling" src="assets/texture_ceiling_light_1000x1000.jpg">
         <img id="artist1" src="assets/artist1_Montage.jpg">
-        <img id="artist2" src="assets/artist2_Montage_v2.jpg">
+        <img id="artist2" src="assets/artist2_Montage.jpg">
         <img id="artist3" src="assets/artist3_Montage.jpg">
         <img id="artist4" src="assets/artist4_Montage.jpg">
 
@@ -202,17 +134,15 @@
 
 
 
-  
 
 
 
-             <a-entity id="camera" camera look-controls wasd-controls position="0 1.7 -10">
-                <a-image move_forward  src="assets/buttons/up.png"   position="0 -0.3 -0.5" rotation="0 0 0" width="0.05" height="0.05"></a-image>
-                <a-image move_backward src="assets/buttons/down.png" position="0 -0.36 -0.5" rotation="0 0 0" width="0.05" height="0.05"></a-image>
-                <a-image move_right src="assets/buttons/right.png"   position="0.06 -0.36 -0.5" rotation="0 0 0" width="0.05" height="0.05"></a-image>
-                <a-image move_left src="assets/buttons/left.png"     position="-0.06 -0.36 -0.5" rotation="0 0 0" width="0.05" height="0.05"></a-image>
-            </a-entity>      
-             
+            <a-entity id="camera"  camera look-controls wasd-controls position="0 1.7 -5">
+              <a-cursor></a-cursor>
+              <a-box mover position="0 -1 -1.5" rotation="0 0 0" width="0.2" height="0.01" depth="0.2" material="color:red;"></a-box>
+            </a-entity>     
+              
+
  
        
         <a-plane material="color:#000;"
@@ -229,13 +159,13 @@
 
         <a-box  id="basement" position="0 0.1 -20" rotation="0 0 0" width="20" height="0.1" depth="20" material="src: #floor; repeat: 1 1; color:#fafafa;" shadow="receive: true"></a-box>
 
-        <a-box  id="roof" position="0 6 -20" rotation="0 0 0" width="20" height="0.1" depth="20" material="src: #ceiling; repeat: 1 1; color:#fafafa;" shadow="receive: true"></a-box>
+        <a-box  id="roof" position="0 6 -20" rotation="0 0 0" width="15" height="0.1" depth="15" material="src: #ceiling; repeat: 1 1; color:#fafafa;" shadow="receive: true"></a-box>
 
          <!-- Rückseiten-->
-        <a-box  position="-5.5 1.5 -17.55" rotation="0 17 0" width="6.2" height="3.2" depth="0.2" material="color:#09fe57;"></a-box>
-        <a-box  position="5.5 1.5 -17.55" rotation="0 -17 0" width="6.2" height="3.2" depth="0.2" material="color:#cf57ff;"></a-box>
-        <a-box  position="-4.5 1.5 -24.55" rotation="0 17 0" width="6.2" height="3.2" depth="0.2" material="color:#3d2eeb;"></a-box>
-        <a-box  position="4.5 1.5 -24.55" rotation="0 -17 0" width="6.2" height="3.2" depth="0.2" material="color:#27f2ff;"></a-box>
+        <a-box  position="-5.5 1.5 -17.55" rotation="0 17 0" width="6.1" height="3" depth="0.2" material="color:#aaa;"></a-box>
+        <a-box  position="5.5 1.5 -17.55" rotation="0 -17 0" width="6.1" height="3" depth="0.2" material="color:#aaa;"></a-box>
+        <a-box  position="-4.5 1.5 -24.55" rotation="0 17 0" width="6.1" height="3" depth="0.2" material="color:#aaa;"></a-box>
+        <a-box  position="4.5 1.5 -24.55" rotation="0 -17 0" width="6.1" height="3" depth="0.2" material="color:#aaa;"></a-box>
 
 
         <!-- Artists Stellwände-->
