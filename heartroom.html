@@ -13,6 +13,7 @@
 
                     AFRAME.registerComponent('play-on-click', {
                         init: function () {
+                            var sound = document.querySelector('#sound');
                             this.onClick = this.onClickPlay.bind(this);
                             this.el.addEventListener('click', this.onClickPlay);
                         },
@@ -20,10 +21,12 @@
                                 var videoEl = this.getAttribute('material').src;
                                     if (videoEl.paused) {
                                       videoEl.play(); 
+                                      sound.pause();
                                         this.querySelector('#play').setAttribute('visible','false');
                                         this.querySelector('#pause').setAttribute('visible','true');
                                     } else { 
                                         videoEl.pause(); 
+                                        sound.play();
                                           this.querySelector('#play').setAttribute('visible','true');
                                           this.querySelector('#pause').setAttribute('visible','false');
                                     } 
@@ -173,10 +176,12 @@
             <img id="intro" src="assets/heart_room/heartroom_intro.jpg">
             
 
-        <video id="video1" preload="auto" src="assets/heart_room/YAB_video1_1.mp4" autoplay crossOrigin="anonymous"></video>
-        <video id="video2" preload="auto" src="assets/heart_room/YAB_video2_association_1.mp4" autoplay crossOrigin="anonymous"></video> 
-        <video id="video3" preload="auto" src="assets/heart_room/YAB_video3_Blog_1.mp4" autoplay crossOrigin="anonymous"></video>  
-        <video id="video4" preload="auto" src="assets/heart_room/YAB_video5_ONLINE_SHOP_yourartbeat_market_1.mp4" autoplay crossOrigin="anonymous"></video>
+            <audio id="sound" src="assets/all_room/sound.mp3" autoplay="true" preload="auto"> </audio>
+            
+        <video id="video1" preload="auto" src="assets/heart_room/YAB_video1_1.mp4" autoplay="false" crossOrigin="anonymous"></video>
+        <video id="video2" preload="auto" src="assets/heart_room/YAB_video2_association_1.mp4" autoplay="false" crossOrigin="anonymous"></video> 
+        <video id="video3" preload="auto" src="assets/heart_room/YAB_video3_Blog_1.mp4" autoplay="false" crossOrigin="anonymous"></video>  
+        <video id="video4" preload="auto" src="assets/heart_room/YAB_video5_ONLINE_SHOP_yourartbeat_market_1.mp4" autoplay="false" crossOrigin="anonymous"></video>
 
         <a-asset-item id="heartmodel" src="assets/heart_room/heart.gltf"></a-asset-item>
         <a-asset-item id="heartmodel1" src="assets/heart_room/heart2.gltf"></a-asset-item>
@@ -233,7 +238,7 @@
         
   <a-entity position="-11 0 -21" rotation="0 -90 0">    
         
-        <a-box  id="chart2" position="5.5 1.5 -17.5" rotation="0 -17 0" width="6" height="3" depth="0.2" material="src: #intro; color:#aaa;"></a-box>
+        <a-box  id="chart2" position="5.5 1.5 -17.5" rotation="0 -17 0" width="6" height="3" depth="0.2" material="src: #intro; color:#aaa;" ></a-box>
       
         <a-box  position="5.5 1.5 -17.55" rotation="0 -17 0" width="6.2" height="3.2" depth="0.2" material="color:#fff;"></a-box>
       
@@ -321,7 +326,7 @@
 
         <!-- Artists Video-->
        
-  
+  <a-entity position="0 1.1 -20" sound="src: #sound; autoplay: true"> </a-entity>
   
         <a-gltf-model src="#heartmodel" position="0 1.1 -20" scale="0.25 0.25 0.25" color="red"
                        animation__rotation="property: rotation; to: 0 360 0; dur: 10000; easing: linear; loop: true"
@@ -343,4 +348,4 @@
     </script>  
 
   </body>
-</html>7
+</html>
