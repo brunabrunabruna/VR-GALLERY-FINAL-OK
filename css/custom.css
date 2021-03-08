@@ -35,13 +35,14 @@ h1 {
   position: absolute;
   width: 100%;
   background-color: black;
+  border-bottom: 1px #333 solid;
+
 }
 
 .navbar-nav {
   font-size: 200%;
   padding: 1rem;
   text-align: right;
-  border-bottom: 1px white solid;
 
 }
 /********* Images ******/
