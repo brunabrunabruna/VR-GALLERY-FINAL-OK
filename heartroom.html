@@ -2,20 +2,21 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>HEART ROOM </title>
+    <title>HEART ROOM</title>
     <meta name="description" content="Hello, WebVR! • A-Frame">
     <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
-    
+   
+
      
- <script>
+
+                   <script>
 
                     AFRAME.registerComponent('play-on-click', {
                         init: function () {
-                            console.log('init video player');
-                            this.onClick = this.onClicker.bind(this);
-                            this.el.addEventListener('click', this.onClicker);
+                            this.onClick = this.onClickPlay.bind(this);
+                            this.el.addEventListener('click', this.onClickPlay);
                         },
-                        onClicker: function (evt) {
+                        onClickPlay: function (evt) {
                                 var videoEl = this.getAttribute('material').src;
                                     if (videoEl.paused) {
                                       videoEl.play(); 
@@ -29,64 +30,148 @@
                         }
                     });
 
-</script>
+                  </script>
 
-      
-    <style>
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
+                  <script>
 
-.topnav {
-  overflow: hidden;
-  background-color: #333;
-}
 
-.topnav a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
+                    AFRAME.registerComponent("move_forward", {
+                        init: function() {
+                        this.mouseup = true;
+                        this.player = document.querySelector("#camera")
+                        this.el.addEventListener("mousedown", (e)=>{
+                          console.log("unten");
+                          this.mouseup = false;
+                        })
+                        this.el.addEventListener("mouseup", (e)=>{
+                          console.log("oben");
+                          this.mouseup = true;
+                        })
+                        },
+                      tick: function() {
+                          if (!this.mouseup) {
+                            var angle = this.player.getAttribute("rotation")
+                            var x = 0.1 * Math.cos(angle.y * Math.PI / 180)
+                            var y = 0.1 * Math.sin(angle.y * Math.PI / 180)
+                            var pos = this.player.getAttribute("position")
+                            pos.x -= y;
+                            pos.z -= x;
+                            this.player.setAttribute("position", pos);
+                          }
+                        }
+                    })
 
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
 
-.topnav a.active {
-  background-color: #4CAF50;
-  color: white;
-}
-</style>
+                    AFRAME.registerComponent("move_backward", {
+                        init: function() {
+                        this.mouseup2 = true;
+                        this.player2 = document.querySelector("#camera")
+                        this.el.addEventListener("mousedown", (e)=>{
+                          console.log("hinten gedrückt");
+                          this.mouseup2 = false;
+                        })
+                        this.el.addEventListener("mouseup", (e)=>{
+                          console.log("hinten losgelassen");
+                          this.mouseup2 = true;
+                        })
+                        },
+                      tick: function() {
+                          if (!this.mouseup2) {
+                            var angle = this.player2.getAttribute("rotation")
+                            var x = 0.1 * Math.cos(angle.y * Math.PI / 180)
+                            var y = 0.1 * Math.sin(angle.y * Math.PI / 180)
+                            var pos = this.player2.getAttribute("position")
+                            pos.x += y;
+                            pos.z += x;
+                            this.player2.setAttribute("position", pos);
+                          }
+                        }
+                    })
+
+
+                    AFRAME.registerComponent("move_left", {
+                        init: function() {
+                        this.mouseup3 = true;
+                        this.player3 = document.querySelector("#camera")
+                        this.el.addEventListener("mousedown", (e)=>{
+                          console.log("hinten gedrückt");
+                          this.mouseup3 = false;
+                        })
+                        this.el.addEventListener("mouseup", (e)=>{
+                          console.log("hinten losgelassen");
+                          this.mouseup3 = true;
+                        })
+                        },
+                      tick: function() {
+                          if (!this.mouseup3) {
+                            var angle = this.player3.getAttribute("rotation")
+                            var x = 0.1 * Math.cos(angle.y * Math.PI / 180)
+                            var y = 0.1 * Math.sin(angle.y * Math.PI / 180)
+                            var pos = this.player3.getAttribute("position")
+                            pos.x -= x;
+                            pos.z += y;
+                            this.player3.setAttribute("position", pos);
+                          }
+                        }
+                    })
+ 
+                    AFRAME.registerComponent("move_right", {
+                        init: function() {
+                        this.mouseup4 = true;
+                        this.player4 = document.querySelector("#camera")
+                        this.el.addEventListener("mousedown", (e)=>{
+                          console.log("hinten gedrückt");
+                          this.mouseup4 = false;
+                        })
+                        this.el.addEventListener("mouseup", (e)=>{
+                          console.log("hinten losgelassen");
+                          this.mouseup4 = true;
+                        })
+                        },
+                      tick: function() {
+                          if (!this.mouseup4) {
+                            var angle = this.player4.getAttribute("rotation")
+                            var x = 0.1 * Math.cos(angle.y * Math.PI / 180)
+                            var y = 0.1 * Math.sin(angle.y * Math.PI / 180)
+                            var pos = this.player4.getAttribute("position")
+                            pos.x += x;
+                            pos.z -= y;
+                            this.player4.setAttribute("position", pos);
+                          }
+                        }
+                    })
+
+                  </script>
+
+                
+
+
+
+
+
+
+
       
   </head>
   <body>
-      
 
 
-        
 
-    <a-scene antialias="true" inspector  shadow="type: pcfsoft"   > 
 
-  
+    <a-scene antialias="true" inspector stats shadow="type: pcfsoft" cursor="rayOrigin: mouse" > 
+    <a-sky color="#000"></a-sky>
         <a-assets>
        
-          
+            <img id="floor" src="assets/all_room/floor4.jpg">
+            <img id="ceiling" src="assets/all_room/texture_ceiling_2.jpg">
             
-        <img id="floor" src="assets/texture_concrete1_shadow_2000x2000.jpg">
-        <img id="ceiling" src="assets/texture_ceiling_light_1000x1000.jpg">
-        <img id="artist1" src="assets/heart_room/projekte_Montage2.jpg">
-        <img id="artist2" src="assets/artist2_Montage.jpg">
-        <img id="artist3" src="assets/artist3_Montage.jpg">
-        <img id="artist4" src="assets/artist4_Montage.jpg">        
-        
             
-        <img id="link1" src="assets/heart_room/visit-web.jpg">
-
+           
+            <img id="onlineshop" src="assets/heart_room/heartroom_onlineshop.jpg">
+            <img id="association" src="assets/heart_room/heartroom_association.jpg"> 
+            <img id="blog" src="assets/heart_room/heartroom_blog.jpg">
+            <img id="intro" src="assets/heart_room/heartroom_intro.jpg">
+            
 
         <video id="video1" preload="auto" src="assets/heart_room/YAB_video1_1.mp4" autoplay crossOrigin="anonymous"></video>
         <video id="video2" preload="auto" src="assets/heart_room/YAB_video2_association_1.mp4" autoplay crossOrigin="anonymous"></video> 
@@ -94,23 +179,26 @@ body {
         <video id="video4" preload="auto" src="assets/heart_room/YAB_video5_ONLINE_SHOP_yourartbeat_market_1.mp4" autoplay crossOrigin="anonymous"></video>
 
         <a-asset-item id="heartmodel" src="assets/heart_room/heart.gltf"></a-asset-item>
+        <a-asset-item id="heartmodel1" src="assets/heart_room/heart2.gltf"></a-asset-item>
+        
         </a-assets>   
 
-        
-        
-      <!-- camera and cursor -->
-        
-        <a-entity id="cam-rig"  movement-controls="speed: 0.1" position="0 0 0"> 
-        <a-entity camera look-controls wasd-controls position="0 1.7 0">
-        <a-cursor ></a-cursor>
-         </a-entity>     
-              
-              
-        </a-entity>
- 
+
+
   
+
+
+
+             <a-entity id="camera" camera look-controls wasd-controls position="0 1.7 -10">
+                <a-image move_forward  src="assets/buttons/up.png"   position="0 -0.3 -0.5" rotation="0 0 0" width="0.05" height="0.05"></a-image>
+                <a-image move_backward src="assets/buttons/down.png" position="0 -0.36 -0.5" rotation="0 0 0" width="0.05" height="0.05"></a-image>
+                <a-image move_right src="assets/buttons/right.png"   position="0.06 -0.36 -0.5" rotation="0 0 0" width="0.05" height="0.05"></a-image>
+                <a-image move_left src="assets/buttons/left.png"     position="-0.06 -0.36 -0.5" rotation="0 0 0" width="0.05" height="0.05"></a-image>
+            </a-entity>      
+             
+ 
        
-        <a-plane material="color:#cccccc;"
+        <a-plane material="color:#000;"
                    repeat="50 50"
                 
                    side="double"
@@ -119,100 +207,140 @@ body {
                      
                    scale="100 100 100" ></a-plane>  
         
-        
-                  
-                  
-        
-<a-entity position="0 0 14" >
+
+
 
         <a-box  id="basement" position="0 0.1 -20" rotation="0 0 0" width="20" height="0.1" depth="20" material="src: #floor; repeat: 1 1; color:#fafafa;" shadow="receive: true"></a-box>
 
-        <a-box  id="roof" position="0 6 -20" rotation="0 0 0" width="15" height="0.1" depth="15" material="src: #ceiling; repeat: 1 1; color:#fafafa;" shadow="receive: true"></a-box>
+        <a-box  id="roof" position="0 6 -20" rotation="0 0 0" width="20" height="0.1" depth="20" material="src: #ceiling; repeat: 1 1; color:#fafafa;" shadow="receive: true"></a-box>
 
- 
-<a-entity  position="0 0 -3">       
+         <!-- Rückseiten
+       
+    
+        <a-box  position="-4.5 1.5 -24.55" rotation="0 17 0" width="6.2" height="3.2" depth="0.2" material="color:#3d2eeb;"></a-box>
+        <a-box  position="4.5 1.5 -24.55" rotation="0 -17 0" width="6.2" height="3.2" depth="0.2" material="color:#27f2ff;"></a-box>-->
+
 
         
-        <!-- Rückseiten-->
-        <a-box  position="-5.5 1.5 -17.55" rotation="0 17 0" width="6.1" height="3" depth="0.2" material="color:#aaa;"></a-box>
-        <a-box  position="5.5 1.5 -17.55" rotation="0 -17 0" width="6.1" height="3" depth="0.2" material="color:#aaa;"></a-box>
         
-        <!--
-        <a-box  position="-4.5 1.5 -24.55" rotation="0 17 0" width="6.1" height="3" depth="0.2" material="color:#aaa;"></a-box>
-        <a-box  position="4.5 1.5 -24.55" rotation="0 -17 0" width="6.1" height="3" depth="0.2" material="color:#aaa;"></a-box> -->
-
+        
+        
         <!-- Artists Stellwände-->
-        <a-box  id="chart1" position="-5.5 1.5 -17.5" rotation="0 17 0" width="6" height="3" depth="0.2" material="src: #artist1; color:#aaa;">
-        
-                <a-box id="artbeatweb" position=" -1 -0.9 0.1" rotation="0 0 0" width="1" height="0.2" depth="0.1" material="src: #link1; color:#aaa;" target="_blank"></a-box>
-         
-        </a-box>
         
         
-        <a-box  id="chart2" position="5.5 1.5 -17.5" rotation="0 -17 0" width="6" height="3" depth="0.2" material="src: #artist1; color:#aaa;"></a-box>
+                
+<!-- wall right-->        
         
+  <a-entity position="-11 0 -21" rotation="0 -90 0">    
+        
+        <a-box  id="chart2" position="5.5 1.5 -17.5" rotation="0 -17 0" width="6" height="3" depth="0.2" material="src: #intro; color:#aaa;"></a-box>
+      
+        <a-box  position="5.5 1.5 -17.55" rotation="0 -17 0" width="6.2" height="3.2" depth="0.2" material="color:#fff;"></a-box>
+      
+      
+
+        <a-entity id="player1" material="shader: flat; src: #video1" geometry="primitive: plane; width: 2.4; height: 1.4;" position="4.55 1.8 -17.6" rotation="0 -17 0" visible="true" play-on-click>
+        
+                <a-image id="play" src="assets/buttons/play.png" width="1.2" height="0.7" visible="true"></a-image>
+                <a-image id="pause" src="assets/buttons/pause.png" width="1.2" height="0.7" visible="false"></a-image>
+
+        </a-entity>
+
+      
+      
+  </a-entity>    
+        
+        
+ <!-- wall front right -->          
+        
+  <a-entity position="-1.5 0 -6.8" rotation="0 0 0">    
+        
+        <a-box  id="chart2" position="5.5 1.5 -17.5" rotation="0 -17 0" width="6" height="3" depth="0.2" material="src: #association; color:#aaa;"></a-box>
+      
+        <a-box  position="5.5 1.5 -17.55" rotation="0 -17 0" width="6.2" height="3.2" depth="0.2" material="color:#fff;"></a-box>
+      
+      
+      
+
+        <a-entity id="player2" material="shader: flat; src: #video2" geometry="primitive: plane; width: 2.4; height: 1.4;" position="4.55 1.8 -17.55" rotation="0 -17 0" visible="true" play-on-click>
+        
+                <a-image id="play" src="assets/buttons/play.png" width="1.2" height="0.7" visible="true"></a-image>
+                <a-image id="pause" src="assets/buttons/pause.png" width="1.2" height="0.7" visible="false"></a-image>
+
+        </a-entity>
+
+      
+      
+  </a-entity>       
+        
+        <!-- wall front left-->          
+        
+  <a-entity position="0.8 0 -6.7" rotation="0 34 0">    
+        
+        <a-box  id="chart2" position="5.5 1.5 -17.5" rotation="0 -17 0" width="6" height="3" depth="0.2" material="src: #blog; color:#aaa;"></a-box>
+      
+        <a-box  position="5.5 1.5 -17.55" rotation="0 -17 0" width="6.2" height="3.2" depth="0.2" material="color:#fff;"></a-box>
+      
+      
+        <a-entity id="player3" material="shader: flat; src: #video3" geometry="primitive: plane; width: 2.4; height: 1.4;" position="4.55 1.8 -17.6" rotation="0 -17 0" visible="true" play-on-click>
+        
+                <a-image id="play" src="assets/buttons/play.png" width="1.2" height="0.7" visible="true"></a-image>
+                <a-image id="pause" src="assets/buttons/pause.png" width="1.2" height="0.7" visible="false"></a-image>
+
+        </a-entity>
+
+      
+      
+  </a-entity>       
+        
+          <!-- wall left-->          
+        
+  <a-entity position="11.5 0 -19" rotation="0 120 0">    
+        
+        <a-box  id="chart2" position="5.5 1.5 -17.5" rotation="0 -17 0" width="6" height="3" depth="0.2" material="src: #onlineshop; color:#aaa;"></a-box>
+      
+        <a-box  position="5.5 1.5 -17.55" rotation="0 -17 0" width="6.2" height="3.2" depth="0.2" material="color:#fff;"></a-box>
+      
+      
+
+        <a-entity id="player4" material="shader: flat; src: #video4" geometry="primitive: plane; width: 2.4; height: 1.4;" position="4.55 1.8 -17.6" rotation="0 -17 0" visible="true" play-on-click>
+        
+                <a-image id="play" src="assets/buttons/play.png" width="1.2" height="0.7" visible="true"></a-image>
+                <a-image id="pause" src="assets/buttons/pause.png" width="1.2" height="0.7" visible="false"></a-image>
+
+        </a-entity>
+
+      
+      
+  </a-entity>       
+
         
         <!--
         <a-box  id="chart3" position="-4.5 1.5 -24.5" rotation="0 17 0" width="6" height="3" depth="0.2" material="src: #artist3; color:#aaa;"></a-box>
-        <a-box  id="chart4" position="4.5 1.5 -24.5" rotation="0 -17 0" width="6" height="3" depth="0.2" material="src: #artist4; color:#aaa;"></a-box>
+        <a-box  id="chart4" position="4.5 1.5 -24.5" rotation="0 -17 0" width="6" height="3" depth="0.2" material="src: #artist4; color:#aaa;"></a-box> -->
 
         <!-- Artists Video-->
-        <a-entity id="player1" material="shader: flat; src: #video1" geometry="primitive: plane; width: 2.56; height: 1.38;" position="-6.49 1.5 -16.9" rotation="0 17 0" visible="true" play-on-click>
-            
-           <a-image id="play" src="assets/buttons/play.png" width="2.56" height="1.38" visible="true"></a-image>
-          <a-image id="pause" src="assets/buttons/pause.png" width="2.56" height="1.38" visible="false"></a-image>
-        </a-entity>
-        
-        <a-entity id="player2" material="shader: flat; src: #video2" geometry="primitive: plane; width: 2.56; height: 1.38;" position="-3.9 1.5 -17.83" rotation="0 17 0" visible="true" play-on-click>
-            
-           <a-image id="play" src="assets/buttons/play.png" width="2.56" height="1.38" visible="true"></a-image>
-          <a-image id="pause" src="assets/buttons/pause.png" width="2.56" height="1.38" visible="false"></a-image>
-        </a-entity>
-        
-        
        
-      
-        <!-- Heart 3d model-->  
-        
-        <a-gltf-model src="#heartmodel" position="0 1.1 -16.7" scale="0.2 0.2 0.2" 
+  
+  
+        <a-gltf-model src="#heartmodel" position="0 1.1 -20" scale="0.25 0.25 0.25" color="red"
                        animation__rotation="property: rotation; to: 0 360 0; dur: 10000; easing: linear; loop: true"
+                       animation__scale1=" property: scale; to: 0.3 0.3 0.3; dur: 1000; easing: easeInElastic; loop: true; dir: alternate;"
+                   
                     
         ></a-gltf-model>
      
-        <a-cylinder position="0 0 -16.7" height="0.7" radius="1.3" segments-radial="60" material="color:#aaa;" >
+        <a-cylinder position="0 0 -20" height="0.7" radius="1.3" segments-radial="60" material="color:#aaa; src: #ceiling" >
 
         </a-cylinder>
-    </a-entity> 
- </a-entity>       
-                         
-<div class="topnav">
-  <a class="active" href="/artistroom2.html">Home</a>
-  <a href="https://www.google.com/search?channel=trow2&client=firefox-b-d&q=club+quarantine">News</a>
-  <a href="#contact">Contact</a>
-  <a href="#about">About</a>
-</div>
 
     </a-scene>
 
-
-      
     <script>
-      
 
 
-
-
-
-        //********** Hier unten die Scipts, die verlinken. Diese können nur gehen, wenn vorher da Object da ist. OMG ES KLAPPT ENDLICH !!! DANKE *****/
-
-        document.querySelector("#artbeatweb").addEventListener("click", e => {
-            location.href= "http://yourartbeat.net/";
-        }) ;
- 
-    
       
     </script>  
 
-
   </body>
-</html>
+</html>7
