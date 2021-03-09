@@ -267,7 +267,7 @@
       
       
 
-        <a-entity id="player2" material="shader: flat; src: #video2" geometry="primitive: plane; width: 2.4; height: 1.4;" position="4.55 1.8 -17.55" rotation="0 -17 0" visible="true" play-on-click>
+        <a-entity id="player2" material="shader: flat; src: #video2" geometry="primitive: plane; width: 2.4; height: 1.4;" position="4.55 1.8 -17.55" rotation="0 -17 0" visible="true" play-on-click autoplay="false">
         
                 <a-image id="play" src="assets/buttons/play.png" width="2.4" height="1.4" visible="true"></a-image>
                 <a-image id="pause" src="assets/buttons/pause.png" width="2.4" height="1.4" visible="false"></a-image>
@@ -287,7 +287,7 @@
         <a-box  position="5.5 1.5 -17.55" rotation="0 -17 0" width="6.2" height="3.2" depth="0.2" material="color:#fff;"></a-box>
       
       
-        <a-entity id="player3" material="shader: flat; src: #video3" geometry="primitive: plane; width: 2.4; height: 1.4;" position="4.55 1.8 -17.6" rotation="0 -17 0" visible="true" play-on-click>
+        <a-entity id="player3" material="shader: flat; src: #video3" geometry="primitive: plane; width: 2.4; height: 1.4;" position="4.55 1.8 -17.6" rotation="0 -17 0" visible="true" play-on-click autoplay="false">
         
                 <a-image id="play" src="assets/buttons/play.png" width="2.4" height="1.4" visible="true"></a-image>
                 <a-image id="pause" src="assets/buttons/pause.png" width="2.4" height="1.4" visible="false"></a-image>
@@ -326,7 +326,7 @@
 
         <!-- Artists Video-->
        
-  <a-entity position="0 1.1 -20" sound="src: #sound; autoplay: true"> </a-entity>
+  <a-entity position="0 1.1 -20" sound="src: #sound; autoplay: false"> </a-entity>
   
         <a-gltf-model src="#heartmodel" position="0 1.1 -20" scale="0.25 0.25 0.25" color="red"
                        animation__rotation="property: rotation; to: 0 360 0; dur: 10000; easing: linear; loop: true"
