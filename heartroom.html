@@ -11,9 +11,12 @@
 
                    <script>
 
+
+
                     AFRAME.registerComponent('play-on-click', {
                         init: function () {
                             var sound = document.querySelector('#sound');
+                            //sound.play();
                             this.onClick = this.onClickPlay.bind(this);
                             this.el.addEventListener('click', this.onClickPlay);
                         },
@@ -21,7 +24,7 @@
                                 var videoEl = this.getAttribute('material').src;
                                     if (videoEl.paused) {
                                       videoEl.play(); 
-                                      sound.pause();
+                                      //sound.pause();
                                         this.querySelector('#play').setAttribute('visible','false');
                                         this.querySelector('#pause').setAttribute('visible','true');
                                     } else { 
@@ -163,6 +166,14 @@
 
     <nav class="navbar navbar-dark" aria-label="First navbar example">
       <div class="container justify-content-end">
+
+        <audio controls autoplay>
+          <source src="audio/sound2.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio> 
+    
+
+
         <a class="" href="https://yourartbeat.net/de/onlinespendenformular/" target="_blank">Donate</b></a>
         <a class="" href="https://your-art-beat-market.myshopify.com" target="_blank">Buy</b></a>
   
@@ -202,21 +213,21 @@
             <img id="intro" src="assets/heart_room/heartroom_intro.jpg">
             
 
-            <audio id="sound" src="assets/all_room/sound.mp3" autoplay="true" preload="auto"> </audio>
-            
-        <video id="video1" preload="auto" src="assets/heart_room/YAB_video1_1.mp4" autoplay="false" crossOrigin="anonymous"></video>
-        <video id="video2" preload="auto" src="assets/heart_room/YAB_video2_association_1.mp4" autoplay="false" crossOrigin="anonymous"></video> 
-        <video id="video3" preload="auto" src="assets/heart_room/YAB_video3_Blog_1.mp4" autoplay="false" crossOrigin="anonymous"></video>  
-        <video id="video4" preload="auto" src="assets/heart_room/YAB_video5_ONLINE_SHOP_yourartbeat_market_1.mp4" autoplay="false" crossOrigin="anonymous"></video>
 
-        <a-asset-item id="heartmodel" src="assets/heart_room/heart.gltf"></a-asset-item>
-        <a-asset-item id="heartmodel1" src="assets/heart_room/heart2.gltf"></a-asset-item>
+
+            
+            <video id="video1" preload="auto" src="assets/heart_room/YAB_video1_1.mp4" autoplay="false" crossOrigin="anonymous"></video>
+            <video id="video2" preload="auto" src="assets/heart_room/YAB_video2_association_1.mp4" autoplay="false" crossOrigin="anonymous"></video> 
+            <video id="video3" preload="auto" src="assets/heart_room/YAB_video3_Blog_1.mp4" autoplay="false" crossOrigin="anonymous"></video>  
+            <video id="video4" preload="auto" src="assets/heart_room/YAB_video5_ONLINE_SHOP_yourartbeat_market_1.mp4" autoplay="false" crossOrigin="anonymous"></video>
+
+            <a-asset-item id="heartmodel" src="assets/heart_room/heart.gltf"></a-asset-item>
+            <a-asset-item id="heartmodel1" src="assets/heart_room/heart2.gltf"></a-asset-item>
         
         </a-assets>   
 
 
 
-  
 
 
 
@@ -229,15 +240,6 @@
              
  
        
-        <a-plane material="color:#000;"
-                   repeat="50 50"
-                
-                   side="double"
-                   position="0 0.1 0"
-                   rotation="90 0 90"
-                     
-                   scale="100 100 100" ></a-plane>  
-        
 
 
 
@@ -345,15 +347,9 @@
       
   </a-entity>       
 
-        
-        <!--
-        <a-box  id="chart3" position="-4.5 1.5 -24.5" rotation="0 17 0" width="6" height="3" depth="0.2" material="src: #artist3; color:#aaa;"></a-box>
-        <a-box  id="chart4" position="4.5 1.5 -24.5" rotation="0 -17 0" width="6" height="3" depth="0.2" material="src: #artist4; color:#aaa;"></a-box> -->
 
-        <!-- Artists Video-->
-       
-  <a-entity position="0 1.1 -20" sound="src: #sound; autoplay: false"> </a-entity>
-  
+
+
         <a-gltf-model src="#heartmodel" position="0 1.1 -20" scale="0.25 0.25 0.25" color="red"
                        animation__rotation="property: rotation; to: 0 360 0; dur: 10000; easing: linear; loop: true"
                        animation__scale1=" property: scale; to: 0.3 0.3 0.3; dur: 1000; easing: easeInElastic; loop: true; dir: alternate;"
@@ -367,8 +363,12 @@
 
     </a-scene>
 
+    
+
 
     <script src="js/bootstrap.bundle.min.js"></script>
+
+
 
   </body>
 </html>
