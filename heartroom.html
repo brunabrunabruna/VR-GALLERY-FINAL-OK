@@ -24,7 +24,7 @@
                                 var videoEl = this.getAttribute('material').src;
                                     if (videoEl.paused) {
                                       videoEl.play(); 
-                                      //sound.pause();
+                                      sound.pause();
                                         this.querySelector('#play').setAttribute('visible','false');
                                         this.querySelector('#pause').setAttribute('visible','true');
                                     } else { 
@@ -167,10 +167,7 @@
     <nav class="navbar navbar-dark" aria-label="First navbar example">
       <div class="container justify-content-end">
 
-        <audio controls autoplay>
-          <source src="audio/sound2.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio> 
+
     
 
 
@@ -363,7 +360,9 @@
 
     </a-scene>
 
-    
+    <audio id="sound"  autoplay loop >
+      <source src="audio/sound2.mp3" type="audio/mpeg">
+    </audio> 
 
 
     <script src="js/bootstrap.bundle.min.js"></script>
