@@ -150,16 +150,42 @@
 
 
 
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/custom.css" rel="stylesheet">
+
 
       
   </head>
   <body>
+    <nav class="navbar navbar-dark" aria-label="First navbar example">
+      <div class="container justify-content-end">
+        <a class="" href="https://yourartbeat.net/de/onlinespendenformular/" target="_blank">Donate</b></a>
+        <a class="" href="https://your-art-beat-market.myshopify.com" target="_blank">Buy</b></a>
+  
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="collapse navbar-collapse" id="navbarsExample01">
+          <ul class="navbar-nav me-auto mb-2 justify-content-end">
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="artistroom.html">Artists</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="projectroom.html">Projects</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="heartroom.html">YourHeartBeat</a></li>
+            <li class="nav-item"><span class="nav-link disabled">YourArtBeat</span></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="https://yourartbeat.net/blog/" target="_blank">Blog</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="https://yourartbeat.net/de/deutsch-mitgliedschaft-im-your-art-beat-e-v/" target="_blank">Join</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="https://yourartbeat.net/imprint/" target="_blank">Impressum</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
 
 
 
-    <a-scene antialias="true" inspector stats shadow="type: pcfsoft" cursor="rayOrigin: mouse" > 
-    <a-sky color="#000"></a-sky>
+    <a-scene antialias="true"   shadow="type: pcfsoft" cursor="rayOrigin: mouse" loading-screen="dotsColor: white; backgroundColor: black"> 
+      <a-sky color="#000"></a-sky>
         <a-assets>
        
             <img id="floor" src="assets/all_room/floor4.jpg">
@@ -301,11 +327,7 @@
 
     </a-scene>
 
-    <script>
-
-
-      
-    </script>  
+    <script src="js/bootstrap.bundle.min.js"></script>
 
   </body>
 </html>

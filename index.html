@@ -16,8 +16,8 @@
 <main>
   <nav class="navbar navbar-dark" aria-label="First navbar example">
     <div class="container justify-content-end">
-      <a class="" href="#">Donate</b></a>
-      <a class="" href="#">Buy</b></a>
+      <a class="" href="https://yourartbeat.net/de/onlinespendenformular/" target="_blank">Donate</b></a>
+      <a class="" href="https://your-art-beat-market.myshopify.com" target="_blank">Buy</b></a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -28,10 +28,11 @@
           <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link active" aria-current="page" href="artistroom.html">Artists</a></li>
           <li class="nav-item"><a class="nav-link active" aria-current="page" href="projectroom.html">Projects</a></li>
-          <li class="nav-item"><a class="nav-link active" aria-current="page" href="heartroom.html">YourArtBeat+</a></li>
-          <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Blog</a></li>
-          <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Join</a></li>
-          <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Impressum</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="heartroom.html">YourHeartBeat</a></li>
+          <li class="nav-item"><span class="nav-link disabled">YourArtBeat</span></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="https://yourartbeat.net/blog/" target="_blank">Blog</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="https://yourartbeat.net/de/deutsch-mitgliedschaft-im-your-art-beat-e-v/" target="_blank">Join</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="https://yourartbeat.net/imprint/" target="_blank">Impressum</a></li>
         </ul>
       </div>
     </div>
@@ -50,8 +51,8 @@
                       our shop and blog, donate and become a member!
                       <b>Enjoy!</b></p>
                       <a href="artistroom.html"><button>Artists</button></a>
-                      <a href="projectroom.html"></a><button>Projects</button></a>
-                      <a href="heartroom.html"></a><button>YOURARTBEAT</button></a>
+                      <a href="projectroom.html"><button>Projects</button></a>
+                      <a href="heartroom.html"><button>YOURARTBEAT</button></a>
                 </div>
                 <div class="col-sm-6 heart">
               </div>
@@ -87,6 +88,14 @@
         </video>
 
     <script src="js/bootstrap.bundle.min.js"></script>
-    
+    <script>
+
+$('button.navbar-toggle').focusout(function(){
+        $(".navbar-collapse").collapse('hide');
+    });
+
+    </script>
+
+
   </body>
 </html>
