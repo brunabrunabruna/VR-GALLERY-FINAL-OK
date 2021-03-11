@@ -205,6 +205,8 @@
         <video id="video1" preload="auto" src="assets/artist_room/artist1.mp4" autoplay crossOrigin="anonymous"></video>
         <video id="video2" preload="auto" src="assets/artist_room/artist2.mp4" autoplay crossOrigin="anonymous"></video>
 
+            
+            <audio id="testsound" src="assets/all_room/sound.mp3" preload="auto" loop="true" autoplay></audio>
         
         </a-assets>   
 
@@ -222,7 +224,13 @@
             </a-entity>      
              
  
-       
+       <a-box sound="src: #testsound; autoplay: true; loop: true;
+               volume: 1;
+               refDistance: 1;
+               rollofFactor: 1;"></a-box>
+        
+     
+        
         <a-plane material="color:#000;"
                    repeat="50 50"
                 
